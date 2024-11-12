@@ -1,15 +1,28 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        // Создание объекта ServiceStation
+        ServiceStation station = new ServiceStationImpl();
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        // Создание объектов классов Bicycle, Car и Truck
+        Bicycle mountainBike = new Bicycle(2, 30, "горный");
+        Bicycle roadBike = new Bicycle(2, 40, "шоссейный");
+        Car toyotaCamry = new Car(4, 220, "бензиновый", "Toyota", "Camry");
+        Car fordMustang = new Car(4, 250, "бензиновый", "Ford", "Mustang");
+        Truck truck = new Truck(6, 160, "дизельный", 10.0);
+
+        // Обслуживание всех объектов на станции
+        station.service(mountainBike); // Вывод: Обслужено колёс - 2
+        //        Обслужено навесное оборудование велосипеда типа "горный"
+        station.service(roadBike); // Вывод: Обслужено колёс - 2
+        //        Обслужено навесное оборудование велосипеда типа "шоссейный"
+        station.service(toyotaCamry); // Вывод: Обслужено колёс - 4
+        //        Обслужен двигатель типа "бензиновый"
+        //        Обслужен автомобиль марки "Toyota" модели "Camry"
+        station.service(fordMustang); // Вывод: Обслужено колёс - 4
+        //        Обслужен двигатель типа "бензиновый"
+        //        Обслужен автомобиль марки "Ford" модели "Mustang"
+        station.service(truck); // Вывод: Обслужено колёс - 6
+        //        Обслужен двигатель типа "дизельный"
+        //        Обслужен грузовик с грузоподъемностью 10.0 тонн
     }
 }
